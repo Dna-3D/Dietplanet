@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dietplanet.com.ng/sitemap.xml
