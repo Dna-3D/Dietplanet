@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://dietplanet.com.ng/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
