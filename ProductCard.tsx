@@ -1,8 +1,9 @@
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ProductWithCategory } from "@shared/schema";
+import { useCart } from "@/contexts/CartContext";
 import { Plus } from "lucide-react";
-import { Button } from "./button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./card";
-import { useCart } from "./CartContext";
-import { ProductWithCategory } from "./schema";
 
 interface ProductCardProps {
   product: ProductWithCategory;
@@ -15,39 +16,71 @@ export function ProductCard({ product }: ProductCardProps) {
     addToCart(product);
   };
 
+  const getCategoryColor = (category?: string) => {
+    switch (category?.toLowerCase()) {
+      case "pizza":
+        return "bg-primary text-white";
+      case "snacks":
+        return "bg-secondary text-white";
+      case "beverages":
+        return "bg-success text-white";
+      default:
+        return "bg-gray-200 text-gray-700";
+    }
+  };
+
   return (
-    <Card className="h-full flex flex-col bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300">
-      <CardHeader className="p-0">
-        <div className="aspect-square w-full overflow-hidden rounded-t-lg">
-          <img
-            src={product.imageUrl || "/api/placeholder/300/300"}
-            alt={product.name}
-            className="w-full h-full object-cover"
-          />
-        </div>
-      </CardHeader>
+    <Card className="group hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+      <div className="relative">
+        <img
+          src={product.imageUrl || "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"}
+          alt={product.name}
+          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        {product.category && (
+          <Badge
+            className={`absolute top-2 left-2 ${getCategoryColor(product.category.name)}`}
+          >
+            {product.category.name}
+          </Badge>
+        )}
+        {!product.isAvailable && (
+          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+            <Badge variant="destructive" className="text-lg px-4 py-2">
+              Out of Stock
+            </Badge>
+          </div>
+        )}
+      </div>
       
-      <CardContent className="flex-1 p-4">
-        <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+      <CardContent className="p-6">
+        <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
           {product.name}
-        </CardTitle>
-        <p className="text-gray-600 dark:text-gray-300 text-sm line-clamp-2">
+        </h3>
+        <p className="text-gray-600 mb-4 line-clamp-2">
           {product.description}
         </p>
+        {product.stock !== null && product.stock < 10 && product.stock > 0 && (
+          <p className="text-sm text-amber-600 mb-2">
+            Only {product.stock} left in stock!
+          </p>
+        )}
       </CardContent>
       
-      <CardFooter className="p-4 pt-0 flex items-center justify-between">
-        <span className="text-xl font-bold text-red-600 dark:text-red-400">
-          ₦{Number(product.price).toLocaleString()}
-        </span>
-        <Button
-          onClick={handleAddToCart}
-          className="bg-red-600 hover:bg-red-700 text-white"
-          size="sm"
-        >
-          <Plus className="h-4 w-4 mr-1" />
-          Add
-        </Button>
+      <CardFooter className="p-6 pt-0">
+        <div className="flex items-center justify-between w-full">
+          <span className="text-2xl font-bold text-primary">
+            ₦{parseFloat(product.price).toLocaleString()}
+          </span>
+          <Button
+            onClick={handleAddToCart}
+            disabled={!product.isAvailable || (product.stock !== null && product.stock <= 0)}
+            className="bg-primary hover:bg-primary/90 text-white"
+          >
+            <Plus className="w-4 h-4 mr-2" />
+            Add to Cart
+          </Button>
+        </div>
       </CardFooter>
     </Card>
   );

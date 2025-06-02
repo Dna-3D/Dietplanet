@@ -5,16 +5,16 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "./dialog";
-import { Button } from "./button";
-import { Input } from "./input";
-import { Label } from "./label";
-import { Textarea } from "./textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select";
-import { Badge } from "./badge";
-import { Card, CardContent, CardHeader, CardTitle } from "./card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./tabs";
-import { Switch } from "./switch";
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Switch } from "@/components/ui/switch";
 import { 
   Plus, 
   Edit, 
@@ -23,13 +23,11 @@ import {
   ShoppingCart, 
   BarChart3,
   DollarSign,
-  Users,
-  Image,
-  Monitor
+  Users
 } from "lucide-react";
-import { apiRequest, queryClient } from "./queryClient";
-import { useToast } from "./use-toast";
-import { ProductWithCategory, OrderWithItems, Category, InsertProduct } from "./schema";
+import { apiRequest, queryClient } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
+import { ProductWithCategory, OrderWithItems, Category, InsertProduct } from "@shared/schema";
 
 interface AdminDashboardProps {
   open: boolean;
@@ -38,9 +36,7 @@ interface AdminDashboardProps {
 
 export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
   const [isProductModalOpen, setIsProductModalOpen] = useState(false);
-  const [isBannerModalOpen, setIsBannerModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<ProductWithCategory | null>(null);
-  const [editingBanner, setEditingBanner] = useState<any>(null);
   const [productForm, setProductForm] = useState({
     name: "",
     description: "",
@@ -48,24 +44,18 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
     categoryId: "",
     imageUrl: "",
     isAvailable: true,
-  });
-  const [bannerForm, setBannerForm] = useState({
-    title: "",
-    subtitle: "",
-    buttonText: "",
-    backgroundImage: "",
-    isActive: true,
+    stock: "",
   });
 
   const { toast } = useToast();
 
   // Queries
-  const { data: products = [] } = useQuery<ProductWithCategory[]>({
+  const { data: products = [], isLoading: productsLoading } = useQuery<ProductWithCategory[]>({
     queryKey: ["/api/admin/products"],
     enabled: open,
   });
 
-  const { data: orders = [] } = useQuery<OrderWithItems[]>({
+  const { data: orders = [], isLoading: ordersLoading } = useQuery<OrderWithItems[]>({
     queryKey: ["/api/admin/orders"],
     enabled: open,
   });
@@ -77,11 +67,6 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
 
   const { data: analytics } = useQuery({
     queryKey: ["/api/admin/analytics"],
-    enabled: open,
-  });
-
-  const { data: banners = [] } = useQuery({
-    queryKey: ["/api/admin/banners"],
     enabled: open,
   });
 
@@ -137,45 +122,6 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
     },
   });
 
-  const createBannerMutation = useMutation({
-    mutationFn: (data: any) => apiRequest("POST", "/api/admin/banners", data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/admin/banners"] });
-      setIsBannerModalOpen(false);
-      resetBannerForm();
-      toast({ title: "Banner created successfully" });
-    },
-    onError: () => {
-      toast({ title: "Error creating banner", variant: "destructive" });
-    },
-  });
-
-  const updateBannerMutation = useMutation({
-    mutationFn: ({ id, data }: { id: number; data: any }) =>
-      apiRequest("PUT", `/api/admin/banners/${id}`, data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/admin/banners"] });
-      setIsBannerModalOpen(false);
-      setEditingBanner(null);
-      resetBannerForm();
-      toast({ title: "Banner updated successfully" });
-    },
-    onError: () => {
-      toast({ title: "Error updating banner", variant: "destructive" });
-    },
-  });
-
-  const deleteBannerMutation = useMutation({
-    mutationFn: (id: number) => apiRequest("DELETE", `/api/admin/banners/${id}`, {}),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/admin/banners"] });
-      toast({ title: "Banner deleted successfully" });
-    },
-    onError: () => {
-      toast({ title: "Error deleting banner", variant: "destructive" });
-    },
-  });
-
   const resetProductForm = () => {
     setProductForm({
       name: "",
@@ -184,47 +130,8 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
       categoryId: "",
       imageUrl: "",
       isAvailable: true,
+      stock: "",
     });
-  };
-
-  const resetBannerForm = () => {
-    setBannerForm({
-      title: "",
-      subtitle: "",
-      buttonText: "",
-      backgroundImage: "",
-      isActive: true,
-    });
-  };
-
-  const handleEditBanner = (banner: any) => {
-    setEditingBanner(banner);
-    setBannerForm({
-      title: banner.title,
-      subtitle: banner.subtitle,
-      buttonText: banner.buttonText,
-      backgroundImage: banner.backgroundImage,
-      isActive: banner.isActive ?? true,
-    });
-    setIsBannerModalOpen(true);
-  };
-
-  const handleBannerSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    const bannerData = {
-      title: bannerForm.title,
-      subtitle: bannerForm.subtitle,
-      buttonText: bannerForm.buttonText,
-      backgroundImage: bannerForm.backgroundImage,
-      isActive: bannerForm.isActive,
-    };
-
-    if (editingBanner) {
-      updateBannerMutation.mutate({ id: editingBanner.id, data: bannerData });
-    } else {
-      createBannerMutation.mutate(bannerData);
-    }
   };
 
   const handleEditProduct = (product: ProductWithCategory) => {
@@ -236,6 +143,7 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
       categoryId: product.categoryId?.toString() || "",
       imageUrl: product.imageUrl || "",
       isAvailable: product.isAvailable ?? true,
+      stock: product.stock?.toString() || "",
     });
     setIsProductModalOpen(true);
   };
@@ -250,6 +158,7 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
       categoryId: productForm.categoryId ? parseInt(productForm.categoryId) : null,
       imageUrl: productForm.imageUrl || null,
       isAvailable: productForm.isAvailable,
+      stock: productForm.stock ? parseInt(productForm.stock) : null,
     };
 
     if (editingProduct) {
@@ -283,14 +192,10 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
           </DialogHeader>
 
           <Tabs defaultValue="products" className="w-full">
-            <TabsList className="grid w-full grid-cols-4">
+            <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="products" className="flex items-center gap-2">
                 <Package className="h-4 w-4" />
                 Products
-              </TabsTrigger>
-              <TabsTrigger value="banners" className="flex items-center gap-2">
-                <Monitor className="h-4 w-4" />
-                Banners
               </TabsTrigger>
               <TabsTrigger value="orders" className="flex items-center gap-2">
                 <ShoppingCart className="h-4 w-4" />
@@ -323,13 +228,13 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
                   <Card key={product.id}>
                     <CardContent className="p-4">
                       <img
-                        src={product.imageUrl || "/api/placeholder/300/300"}
+                        src={product.imageUrl || "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200"}
                         alt={product.name}
                         className="w-full h-32 object-cover rounded mb-2"
                       />
                       <h4 className="font-semibold">{product.name}</h4>
                       <p className="text-sm text-gray-600 mb-2">{product.description}</p>
-                      <p className="text-lg font-bold text-primary">₦{Number(product.price).toLocaleString()}</p>
+                      <p className="text-lg font-bold text-primary">${parseFloat(product.price).toFixed(2)}</p>
                       <div className="flex items-center justify-between mt-2">
                         <Badge variant={product.isAvailable ? "default" : "secondary"}>
                           {product.isAvailable ? "Available" : "Unavailable"}
@@ -349,65 +254,6 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
                           >
                             <Trash2 className="h-4 w-4" />
                           </Button>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="banners" className="space-y-4">
-              <div className="flex justify-between items-center">
-                <h3 className="text-lg font-semibold">Banner Management</h3>
-                <Button
-                  onClick={() => {
-                    resetBannerForm();
-                    setEditingBanner(null);
-                    setIsBannerModalOpen(true);
-                  }}
-                  className="bg-primary hover:bg-primary/90"
-                >
-                  <Plus className="h-4 w-4 mr-2" />
-                  Add Banner
-                </Button>
-              </div>
-
-              <div className="grid grid-cols-1 gap-4">
-                {banners.map((banner: any) => (
-                  <Card key={banner.id}>
-                    <CardContent className="p-4">
-                      <div className="flex gap-4">
-                        <img
-                          src={banner.backgroundImage || "/api/placeholder/300/150"}
-                          alt={banner.title}
-                          className="w-48 h-24 object-cover rounded"
-                        />
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-lg">{banner.title}</h4>
-                          <p className="text-gray-600 mb-2">{banner.subtitle}</p>
-                          <p className="text-sm text-gray-500">Button: {banner.buttonText}</p>
-                          <div className="flex items-center justify-between mt-3">
-                            <Badge variant={banner.isActive ? "default" : "secondary"}>
-                              {banner.isActive ? "Active" : "Inactive"}
-                            </Badge>
-                            <div className="flex gap-1">
-                              <Button
-                                variant="outline"
-                                size="icon"
-                                onClick={() => handleEditBanner(banner)}
-                              >
-                                <Edit className="h-4 w-4" />
-                              </Button>
-                              <Button
-                                variant="outline"
-                                size="icon"
-                                onClick={() => deleteBannerMutation.mutate(banner.id)}
-                              >
-                                <Trash2 className="h-4 w-4" />
-                              </Button>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </CardContent>
@@ -451,11 +297,11 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
                       <div className="grid grid-cols-2 gap-4 mb-4">
                         <div>
                           <p><strong>Customer:</strong> {order.customerName}</p>
-                          <p><strong>Phone:</strong> {order.customerPhone}</p>
-                          <p><strong>Address:</strong> {order.customerAddress}</p>
+                          <p><strong>Email:</strong> {order.customerEmail}</p>
+                          <p><strong>Phone:</strong> {order.customerPhone || 'N/A'}</p>
                         </div>
                         <div>
-                          <p><strong>Total:</strong> ₦{Number(order.totalAmount).toLocaleString()}</p>
+                          <p><strong>Total:</strong> ${parseFloat(order.total).toFixed(2)}</p>
                           <p><strong>Created:</strong> {new Date(order.createdAt!).toLocaleDateString()}</p>
                         </div>
                       </div>
@@ -465,7 +311,7 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
                           <ul className="list-disc list-inside mt-2">
                             {order.items.map((item) => (
                               <li key={item.id}>
-                                {item.product.name} x {item.quantity} - ₦{Number(item.price).toLocaleString()}
+                                {item.product.name} x {item.quantity} - ${parseFloat(item.price).toFixed(2)}
                               </li>
                             ))}
                           </ul>
@@ -488,7 +334,7 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
                       </div>
                       <div>
                         <div className="text-2xl font-bold">
-                          ₦{analytics?.totalRevenue?.toLocaleString() || '0'}
+                          ${analytics?.totalRevenue?.toFixed(2) || '0.00'}
                         </div>
                         <div className="text-sm text-gray-500">Total Revenue</div>
                       </div>
@@ -513,7 +359,7 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-center">
-                      <div className="bg-green-600 text-white p-3 rounded-full mr-4">
+                      <div className="bg-success text-white p-3 rounded-full mr-4">
                         <Users className="h-6 w-6" />
                       </div>
                       <div>
@@ -559,24 +405,25 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
               />
             </div>
             <div>
-              <Label htmlFor="price">Price (₦)</Label>
+              <Label htmlFor="price">Price</Label>
               <Input
                 id="price"
                 type="number"
                 step="0.01"
+                min="0"
                 value={productForm.price}
                 onChange={(e) => setProductForm({ ...productForm, price: e.target.value })}
                 required
               />
             </div>
             <div>
-              <Label htmlFor="categoryId">Category</Label>
+              <Label htmlFor="category">Category</Label>
               <Select
                 value={productForm.categoryId}
                 onValueChange={(value) => setProductForm({ ...productForm, categoryId: value })}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select category" />
+                  <SelectValue placeholder="Select a category" />
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((category) => (
@@ -588,7 +435,7 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
               </Select>
             </div>
             <div>
-              <Label htmlFor="imageUrl">Image URL (optional)</Label>
+              <Label htmlFor="imageUrl">Image URL</Label>
               <Input
                 id="imageUrl"
                 type="url"
@@ -596,24 +443,39 @@ export function AdminDashboard({ open, onOpenChange }: AdminDashboardProps) {
                 onChange={(e) => setProductForm({ ...productForm, imageUrl: e.target.value })}
               />
             </div>
+            <div>
+              <Label htmlFor="stock">Stock</Label>
+              <Input
+                id="stock"
+                type="number"
+                min="0"
+                value={productForm.stock}
+                onChange={(e) => setProductForm({ ...productForm, stock: e.target.value })}
+              />
+            </div>
             <div className="flex items-center space-x-2">
               <Switch
-                id="isAvailable"
+                id="available"
                 checked={productForm.isAvailable}
                 onCheckedChange={(checked) => setProductForm({ ...productForm, isAvailable: checked })}
               />
-              <Label htmlFor="isAvailable">Available</Label>
+              <Label htmlFor="available">Available</Label>
             </div>
             <div className="flex gap-2">
-              <Button type="submit" className="flex-1">
-                {editingProduct ? "Update Product" : "Create Product"}
-              </Button>
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => setIsProductModalOpen(false)}
+                className="flex-1"
               >
                 Cancel
+              </Button>
+              <Button
+                type="submit"
+                className="flex-1 bg-primary hover:bg-primary/90"
+                disabled={createProductMutation.isPending || updateProductMutation.isPending}
+              >
+                {editingProduct ? "Update" : "Create"}
               </Button>
             </div>
           </form>

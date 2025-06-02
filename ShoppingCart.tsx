@@ -4,15 +4,15 @@ import {
   SheetContent,
   SheetHeader,
   SheetTitle,
-} from "./sheet";
-import { Button } from "./button";
-import { Separator } from "./separator";
-import { Badge } from "./badge";
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
 import { Plus, Minus, Trash2 } from "lucide-react";
-import { useCart } from "./CartContext";
-import { useAuth } from "./AuthContext";
-import { apiRequest } from "./queryClient";
-import { useToast } from "./use-toast";
+import { useCart } from "@/contexts/CartContext";
+import { useAuth } from "@/contexts/AuthContext";
+import { apiRequest } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
 import { LoginModal } from "./LoginModal";
 
 interface ShoppingCartProps {
@@ -48,12 +48,12 @@ export function ShoppingCart({ open, onOpenChange }: ShoppingCartProps) {
     try {
       const orderData = {
         customerName: userProfile.displayName || currentUser.email?.split('@')[0] || 'Customer',
+        customerEmail: currentUser.email || '',
         customerPhone: customerPhone,
-        customerAddress: deliveryAddress,
-        totalAmount: getTotalPrice(),
-        paymentMethod: "pay_on_delivery",
+        deliveryAddress: deliveryAddress,
         items: cartItems.map(item => ({
           productId: item.productId,
+          productName: item.product.name,
           quantity: item.quantity,
           price: item.product.price,
         })),
@@ -62,8 +62,8 @@ export function ShoppingCart({ open, onOpenChange }: ShoppingCartProps) {
       const response = await apiRequest("POST", "/api/orders", orderData) as any;
       
       // Automatically open WhatsApp with order details
-      if (response.whatsappUrl) {
-        window.open(response.whatsappUrl, '_blank');
+      if (response.whatsappNotificationUrl) {
+        window.open(response.whatsappNotificationUrl, '_blank');
       }
       
       await clearCart();
@@ -115,17 +115,17 @@ export function ShoppingCart({ open, onOpenChange }: ShoppingCartProps) {
                 {cartItems.map((item) => (
                   <div
                     key={item.id}
-                    className="flex items-center space-x-4 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg"
+                    className="flex items-center space-x-4 bg-gray-50 p-4 rounded-lg"
                   >
                     <img
-                      src={item.product.imageUrl || "/api/placeholder/80/80"}
+                      src={item.product.imageUrl || "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&h=80"}
                       alt={item.product.name}
                       className="w-16 h-16 object-cover rounded"
                     />
                     <div className="flex-1">
                       <h4 className="font-medium">{item.product.name}</h4>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm">
-                        ₦{Number(item.product.price).toLocaleString()}
+                      <p className="text-gray-600 text-sm">
+                        ₦{parseFloat(item.product.price).toLocaleString()}
                       </p>
                       <div className="flex items-center mt-2 space-x-2">
                         <Button
@@ -149,7 +149,7 @@ export function ShoppingCart({ open, onOpenChange }: ShoppingCartProps) {
                     </div>
                     <div className="text-right">
                       <p className="font-medium">
-                        ₦{(Number(item.product.price) * item.quantity).toLocaleString()}
+                        ₦{(parseFloat(item.product.price) * item.quantity).toLocaleString()}
                       </p>
                       <Button
                         variant="ghost"

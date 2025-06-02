@@ -4,14 +4,14 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "./dialog";
-import { Button } from "./button";
-import { Input } from "./input";
-import { Label } from "./label";
-import { Separator } from "./separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./tabs";
-import { useAuth } from "./AuthContext";
-import { useToast } from "./use-toast";
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useAuth } from "@/contexts/AuthContext";
+import { useToast } from "@/hooks/use-toast";
 import { Mail, Lock, User, Chrome } from "lucide-react";
 
 interface LoginModalProps {

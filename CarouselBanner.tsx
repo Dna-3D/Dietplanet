@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button } from "./button";
+import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Slide {
@@ -47,6 +47,7 @@ export function CarouselBanner() {
       subtitle: "Get your order in 30 minutes or less",
       buttonText: "Track Order",
       buttonAction: () => {
+        // Track order functionality would go here
         console.log("Track order clicked");
       },
       backgroundImage: "https://images.unsplash.com/photo-1588315029754-2dd089d39a1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=600",
@@ -103,6 +104,7 @@ export function CarouselBanner() {
         ))}
       </div>
 
+      {/* Carousel indicators */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {slides.map((_, index) => (
           <button
@@ -117,6 +119,7 @@ export function CarouselBanner() {
         ))}
       </div>
 
+      {/* Navigation arrows */}
       <button
         onClick={prevSlide}
         className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-accent transition-colors p-2"

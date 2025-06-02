@@ -1,11 +1,11 @@
-import { pgTable, text, integer, decimal, timestamp, boolean } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, integer, boolean, timestamp, numeric } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
 export const users = pgTable("users", {
-  id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+  id: serial("id").primaryKey(),
   firebaseUid: text("firebase_uid").notNull().unique(),
-  email: text("email").notNull(),
+  email: text("email").notNull().unique(),
   displayName: text("display_name"),
   photoURL: text("photo_url"),
   isAdmin: boolean("is_admin").default(false),
@@ -13,52 +13,53 @@ export const users = pgTable("users", {
 });
 
 export const categories = pgTable("categories", {
-  id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
-  name: text("name").notNull(),
+  id: serial("id").primaryKey(),
+  name: text("name").notNull().unique(),
   description: text("description"),
-  createdAt: timestamp("created_at").defaultNow(),
 });
 
 export const products = pgTable("products", {
-  id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+  id: serial("id").primaryKey(),
   name: text("name").notNull(),
-  description: text("description"),
-  price: decimal("price", { precision: 10, scale: 2 }).notNull(),
-  imageUrl: text("image_url"),
+  description: text("description").notNull(),
+  price: numeric("price", { precision: 10, scale: 2 }).notNull(),
   categoryId: integer("category_id").references(() => categories.id),
+  imageUrl: text("image_url"),
   isAvailable: boolean("is_available").default(true),
+  stock: integer("stock").default(0),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
 export const orders = pgTable("orders", {
-  id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+  id: serial("id").primaryKey(),
   userId: integer("user_id").references(() => users.id),
-  totalAmount: decimal("total_amount", { precision: 10, scale: 2 }).notNull(),
-  status: text("status").notNull().default("pending"),
+  total: numeric("total", { precision: 10, scale: 2 }).notNull(),
+  status: text("status").notNull().default("pending"), // pending, preparing, ready, delivered
   customerName: text("customer_name").notNull(),
-  customerPhone: text("customer_phone").notNull(),
-  customerAddress: text("customer_address").notNull(),
-  paymentMethod: text("payment_method").notNull().default("pay_on_delivery"),
-  notes: text("notes"),
+  customerEmail: text("customer_email").notNull(),
+  customerPhone: text("customer_phone"),
+  deliveryAddress: text("delivery_address"),
   createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
 });
 
 export const orderItems = pgTable("order_items", {
-  id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
-  orderId: integer("order_id").references(() => orders.id).notNull(),
-  productId: integer("product_id").references(() => products.id).notNull(),
+  id: serial("id").primaryKey(),
+  orderId: integer("order_id").references(() => orders.id),
+  productId: integer("product_id").references(() => products.id),
   quantity: integer("quantity").notNull(),
-  price: decimal("price", { precision: 10, scale: 2 }).notNull(),
+  price: numeric("price", { precision: 10, scale: 2 }).notNull(),
 });
 
 export const cartItems = pgTable("cart_items", {
-  id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
-  userId: integer("user_id").references(() => users.id).notNull(),
-  productId: integer("product_id").references(() => products.id).notNull(),
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").references(() => users.id),
+  productId: integer("product_id").references(() => products.id),
   quantity: integer("quantity").notNull(),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+// Insert schemas
 export const insertUserSchema = createInsertSchema(users).omit({
   id: true,
   createdAt: true,
@@ -66,7 +67,6 @@ export const insertUserSchema = createInsertSchema(users).omit({
 
 export const insertCategorySchema = createInsertSchema(categories).omit({
   id: true,
-  createdAt: true,
 });
 
 export const insertProductSchema = createInsertSchema(products).omit({
@@ -77,6 +77,7 @@ export const insertProductSchema = createInsertSchema(products).omit({
 export const insertOrderSchema = createInsertSchema(orders).omit({
   id: true,
   createdAt: true,
+  updatedAt: true,
 });
 
 export const insertOrderItemSchema = createInsertSchema(orderItems).omit({
@@ -88,6 +89,7 @@ export const insertCartItemSchema = createInsertSchema(cartItems).omit({
   createdAt: true,
 });
 
+// Types
 export type User = typeof users.$inferSelect;
 export type InsertUser = z.infer<typeof insertUserSchema>;
 
@@ -106,6 +108,7 @@ export type InsertOrderItem = z.infer<typeof insertOrderItemSchema>;
 export type CartItem = typeof cartItems.$inferSelect;
 export type InsertCartItem = z.infer<typeof insertCartItemSchema>;
 
+// Extended types for API responses
 export interface ProductWithCategory extends Product {
   category?: Category;
 }
