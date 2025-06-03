@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dietplanet - Admin Panel</title>
+    <meta name="robots" content="noindex, nofollow"> <!-- Tell search engines not to index admin page -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <div class="logo-background"></div>
+                <img src="logo.png" alt="Dietplanet Logo" id="logo-img">
+            </div>
+            <ul>
+                <li><a href="index.html">View Site</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="#" id="admin-logout-link" class="active">Admin Logout</a></li>
+                <li>
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="admin-container">
+        <h1>Admin Dashboard</h1>
+
+        <section id="admin-auth" style="display:block;"> <!-- Show by default, JS will hide if logged in -->
+             <h2>Admin Login</h2>
+             <input type="email" id="admin-login-email" placeholder="Admin Email" required>
+             <input type="password" id="admin-login-password" placeholder="Admin Password" required>
+             <button id="admin-login-submit-btn">Login</button>
+        </section>
+
+        <div id="admin-content" style="display:none;">
+            <section id="carousel-management">
+                <h2>Manage Carousel Advertisements</h2>
+                <form id="carousel-form">
+                    <div>
+                        <label for="carousel-image-url">Image URL:</label>
+                        <input type="url" id="carousel-image-url" name="carousel-image-url" required>
+                    </div>
+                    <div>
+                        <label for="carousel-alt-text">Alt Text:</label>
+                        <input type="text" id="carousel-alt-text" name="carousel-alt-text" required>
+                    </div>
+                    <div>
+                        <label for="carousel-link">Link (optional):</label>
+                        <input type="url" id="carousel-link" name="carousel-link">
+                    </div>
+                    <button type="submit">Add/Update Carousel Slide</button>
+                </form>
+                <h3>Current Carousel Slides</h3>
+                <div id="current-carousel-slides">
+                    <!-- Slides will be listed here -->
+                </div>
+            </section>
+
+            <hr>
+
+            <section id="product-management">
+                <h2>Manage Products</h2>
+                <form id="product-form">
+                    <input type="hidden" id="product-id" name="product-id"> <!-- For updates -->
+                    <div>
+                        <label for="product-name">Product Name:</label>
+                        <input type="text" id="product-name" name="product-name" required>
+                    </div>
+                    <div>
+                        <label for="product-description">Description:</label>
+                        <textarea id="product-description" name="product-description" required></textarea>
+                    </div>
+                    <div>
+                        <label for="product-price">Price ($):</label>
+                        <input type="number" id="product-price" name="product-price" step="0.01" required>
+                    </div>
+                    <div>
+                        <label for="product-image-url">Image URL:</label>
+                        <input type="url" id="product-image-url" name="product-image-url" required>
+                    </div>
+                    <button type="submit" id="save-product-btn">Add Product</button>
+                    <button type="button" id="clear-product-form-btn" style="display:none;">Clear Form</button>
+                </form>
+                <h3>Current Products</h3>
+                <div id="current-products-list">
+                    <!-- Products will be listed here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="https://whatsapp.com/channel/0029VbAG6dL96H4OAWQuwy3K" target="_blank">WhatsApp Channel</a> |
+            <a href="https://tiktok.com/@dietplanetnigeria" target="_blank">TikTok</a>
+        </div>
+        <p>&copy; Dietplanet 2025. All rights reserved. Created by DARC Designs.</p>
+    </footer>
+
+    <!-- Firebase SDKs - IMPORTANT: Add these before your script.js -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
