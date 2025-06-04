@@ -1076,16 +1076,28 @@ footer p {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    header nav {
+        flex-wrap: wrap; /* Allows items to wrap to next line if needed */
+        justify-content: center; /* Center navigation on smaller screens */
+    }
     nav ul {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row; /* Keep them horizontal */
+        flex-wrap: wrap; /* Allow items to wrap if they don't fit */
+        justify-content: center; /* Center items if they wrap */
+        width: 100%; /* Ensure ul takes full width to allow wrapping */
     }
     nav ul li {
-        margin: 8px 0;
+        margin: 5px 8px; /* Reduce vertical margin, adjust horizontal spacing */
+        font-size: 0.9em; /* Optionally reduce font size for smaller screens */
+    }
+    nav ul li a {
+        padding: 5px 8px; /* Adjust padding for links */
     }
     .theme-switch {
-        margin-top: 10px; /* Add some space when stacked */
+        margin: 5px 8px; /* Adjust margin for theme switch */
     }
+    /* ... keep your other existing responsive styles for .product-item, .modal-content, etc. ... */
+}
     .product-item {
         flex-direction: column;
         align-items: center;
