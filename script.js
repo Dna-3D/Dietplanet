@@ -75,36 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     // ... (Your existing theme switcher, carousel, etc. code) ...
 
-    // Hamburger Menu Toggle
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    const navList = document.getElementById('nav-list'); // The ID we added to the <ul>
-
-    if (hamburgerMenu && navList) {
-        hamburgerMenu.addEventListener('click', () => {
-            navList.classList.toggle('active'); // Toggles the 'active' class on the ul
-            hamburgerMenu.classList.toggle('open'); // Toggles 'open' for hamburger animation
-            // Optional: Prevent body scrolling when menu is open
-            document.body.classList.toggle('no-scroll');
-        });
-
-        // Optional: Close mobile menu when a navigation link is clicked
-        navList.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navList.classList.remove('active');
-                hamburgerMenu.classList.remove('open');
-                document.body.classList.remove('no-scroll');
-            });
-        });
-    }
-
-    // Optional: Add CSS for no-scroll to style.css
-    // body.no-scroll {
-    //     overflow: hidden;
-    // }
-
-    // ... (Rest of your existing script.js code) ...
-});
-
     // --- Customer Page Specific UI & Logic ---
     if (document.body.contains(document.getElementById('product-list'))) { // Changed from product-grid
         const cartCountEl = document.getElementById('cart-count');
