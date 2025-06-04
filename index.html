@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dietplanet - Fast Pizza & Snacks Delivery for FUTO Students | Order Online</title>
+    <meta name="description" content="Craving delicious pizza or snacks near FUTO? Dietplanet offers fast online ordering and delivery for students. Explore our menu and satisfy your hunger today!">
+    <meta name="keywords" content="FUTO food delivery, pizza FUTO, snacks FUTO, Dietplanet, online food order Nigeria, Owerri food, student meals, FUTO eats, pizza delivery Owerri">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="YOUR_DOMAIN_HERE"> <!-- Replace with your actual domain -->
+    <meta property="og:title" content="Dietplanet - Fast Pizza & Snacks Delivery for FUTO Students">
+    <meta property="og:description" content="Fast online ordering for delicious pizza and snacks, perfect for FUTO students.">
+    <meta property="og:image" content="YOUR_DOMAIN_HERE/logo.png"> <!-- Replace with your actual domain -->
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="YOUR_DOMAIN_HERE"> <!-- Replace with your actual domain -->
+    <meta property="twitter:title" content="Dietplanet - Fast Pizza & Snacks Delivery for FUTO Students">
+    <meta property="twitter:description" content="Fast online ordering for delicious pizza and snacks, perfect for FUTO students.">
+    <meta property="twitter:image" content="YOUR_DOMAIN_HERE/logo.png"> <!-- Replace with your actual domain -->
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <div class="logo-background"></div>
+                <img src="logo.png" alt="Dietplanet Logo" id="logo-img">
+            </div>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="#cart">Cart (<span id="cart-count">0</span>)</a></li>
+                <li><a href="#" id="login-link">Login</a></li>
+                <li><a href="admin.html" id="admin-link" style="display:none;">Admin</a></li>
+                <li>
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="carousel-banner">
+            <!-- Carousel content will be loaded here by JavaScript -->
+            <div class="carousel-slide active">
+                <img src="https://via.placeholder.com/1200x450?text=Delicious+Pizza+Offer" alt="Ad 1">
+            </div>
+            <div class="carousel-slide">
+                <img src="https://via.placeholder.com/1200x450?text=Tasty+Snacks+Here" alt="Ad 2">
+            </div>
+            <!-- Add more slides as needed, or dynamically from admin -->
+            <!-- Controls are added by JS if more than one slide -->
+        </section>
+
+        <section id="menu" class="product-listing">
+            <h2>Our Menu</h2>
+            <div id="product-list"> <!-- Changed from product-grid -->
+                <!-- Products will be loaded here by JavaScript -->
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/150x150?text=Pizza+Margherita" alt="Pizza Margherita">
+                    <div class="product-details">
+                        <h3>Pizza Margherita</h3>
+                        <p>Classic cheese and tomato pizza.</p>
+                        <p class="price">₦15000.00</p> <!-- Updated Price -->
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn" data-id="1" data-name="Pizza Margherita" data-price="15000.00">Add to Cart</button>
+                            <button class="whatsapp-order-btn" data-name="Pizza Margherita" data-price="15000.00">Order via WhatsApp</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/150x150?text=Pepperoni+Pizza" alt="Pepperoni Pizza">
+                    <div class="product-details">
+                        <h3>Pepperoni Pizza</h3>
+                        <p>Loaded with pepperoni.</p>
+                        <p class="price">₦18000.00</p> <!-- Updated Price -->
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn" data-id="2" data-name="Pepperoni Pizza" data-price="18000.00">Add to Cart</button>
+                            <button class="whatsapp-order-btn" data-name="Pepperoni Pizza" data-price="18000.00">Order via WhatsApp</button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="product-item">
+                    <img src="https://via.placeholder.com/150x150?text=Chicken+Snack+Box" alt="Chicken Snack Box">
+                     <div class="product-details">
+                        <h3>Chicken Snack Box</h3>
+                        <p>Crispy chicken pieces with dip.</p>
+                        <p class="price">₦12000.00</p> <!-- Updated Price -->
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn" data-id="3" data-name="Chicken Snack Box" data-price="12000.00">Add to Cart</button>
+                            <button class="whatsapp-order-btn" data-name="Chicken Snack Box" data-price="12000.00">Order via WhatsApp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cart" class="cart-section">
+            <h2>Your Cart</h2>
+            <div id="cart-items">
+                <!-- Cart items will be loaded here by JavaScript -->
+                <p>Your cart is empty.</p>
+            </div>
+            <div id="cart-summary">
+                <p>Total: ₦<span id="cart-total">0.00</span></p> <!-- Updated Currency -->
+                <button id="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </section>
+
+        <!-- Login/Sign up Modal -->
+        <div id="auth-modal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close-btn" id="auth-close-btn">&times;</span>
+                <div id="login-form">
+                    <h3>Login</h3>
+                    <input type="email" id="login-email" placeholder="Email" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button id="login-submit-btn">Login</button>
+                    <p>New user? <a href="#" id="show-signup">Sign up here</a></p>
+                </div>
+                <div id="signup-form" style="display:none;">
+                    <h3>Sign Up</h3>
+                    <input type="email" id="signup-email" placeholder="Email" required>
+                    <input type="password" id="signup-password" placeholder="Password" required>
+                    <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+                    <button id="signup-submit-btn">Sign Up</button>
+                    <p>Already have an account? <a href="#" id="show-login">Login here</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Info Modal -->
+        <div id="checkout-info-modal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close-btn" id="checkout-info-close-btn">&times;</span>
+                <h3>Delivery Information</h3>
+                <input type="text" id="checkout-name" placeholder="Full Name" required>
+                <input type="tel" id="checkout-phone" placeholder="Phone Number (e.g., 0913...)" required>
+                <input type="text" id="checkout-address" placeholder="Delivery Address" required>
+                <div class="checkout-options">
+                    <button id="payment-on-delivery-btn">Confirm (Pay on Delivery)</button>
+                    <button id="pay-via-whatsapp-btn">Pay via WhatsApp Chat</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="https://whatsapp.com/channel/0029VbAG6dL96H4OAWQuwy3K" target="_blank">WhatsApp Channel</a> |
+            <a href="https://tiktok.com/@dietplanetnigeria" target="_blank">TikTok</a>
+        </div>
+        <p>&copy; Dietplanet 2025. All rights reserved. Created by DARC Designs.</p>
+    </footer>
+
+    <!-- Firebase SDKs - IMPORTANT: Add these before your script.js -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
