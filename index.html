@@ -24,28 +24,32 @@
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo-container">
-                <div class="logo-background"></div>
-                <img src="logo.png" alt="Dietplanet Logo" id="logo-img">
-            </div>
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="#cart">Cart (<span id="cart-count">0</span>)</a></li>
-                <li><a href="#" id="login-link">Login</a></li>
-                <li><a href="admin.html" id="admin-link" style="display:none;">Admin</a></li>
-                <li>
-                    <label class="theme-switch" for="theme-toggle">
-                        <input type="checkbox" id="theme-toggle">
-                        <span class="slider round"></span>
-                    </label>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <nav>
+        <div class="logo-container">
+            <div class="logo-background"></div>
+            <img src="logo.png" alt="Dietplanet Logo" id="logo-img">
+        </div>
+        <div class="hamburger-menu" id="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul id="nav-list"> <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="#cart">Cart (<span id="cart-count">0</span>)</a></li>
+            <li><a href="#" id="login-link">Login</a></li>
+            <li><a href="admin.html" id="admin-link" style="display:none;">Admin</a></li>
+            <li>
+                <label class="theme-switch" for="theme-toggle">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </li>
+        </ul>
+    </nav>
+</header>
 
     <main>
         <section id="home" class="carousel-banner">
