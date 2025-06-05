@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Diet Planet | Fresh Food for FUTO and UNIPORT Students</title>
+    <meta name="description" content="Browse our delicious menu of pizzas, snacks, and drinks. Fast delivery to FUTO students at affordable prices.">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="logo.png" alt="Diet Planet Logo" width="40" height="40" class="me-2">
+                <span class="fw-bold">Diet Planet</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-outline-light me-2" id="theme-toggle">
+                        <i class="bi bi-moon-fill" id="theme-icon"></i>
+                    </button>
+                    <button class="btn btn-secondary me-2" onclick="toggleCart()">
+                        <i class="bi bi-cart"></i>
+                        <span class="badge bg-danger" id="cart-count">0</span>
+                    </button>
+                    <button class="btn btn-light" id="login-btn" onclick="showAuth()">Login</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center" style="padding-top: 80px;">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-4">Our Delicious Menu</h1>
+                    <p class="lead">Fresh, healthy, and affordable food options for FUTO students</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Categories -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center mb-5">
+                        <h2 class="text-primary">Browse Our Categories</h2>
+                        <p class="text-muted">All items are freshly prepared and delivered hot to your location</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pizzas Section -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h3 class="text-primary mb-4">🍕 Pizzas</h3>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <div class="card-img-top product-image d-flex align-items-center justify-content-center">
+                            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Margherita Supreme Pizza" class="product-img">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Margherita Supreme</h5>
+                            <p class="card-text">Fresh tomatoes, mozzarella, and basil on crispy crust</p>
+                            <p class="price">₦11,200</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" onclick="addToCart('margherita-supreme', 'Margherita Supreme', 3500)">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                                <a href="https://wa.me/2349135371742?text=I%20want%20to%20order%20Margherita%20Supreme%20-%20₦3,500" 
+                                   class="btn btn-secondary" target="_blank">
+                                    <i class="bi bi-whatsapp"></i> Order via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <div class="card-img-top product-image d-flex align-items-center justify-content-center">
+                            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Pepperoni Pizza" class="product-img">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Pepperoni Classic</h5>
+                            <p class="card-text">Spicy pepperoni with mozzarella cheese and tomato sauce</p>
+                            <p class="price">₦9,300</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" onclick="addToCart('pepperoni-classic', 'Pepperoni Classic', 4000)">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                                <a href="https://wa.me/2349135371742?text=I%20want%20to%20order%20Pepperoni%20Classic%20-%20₦4,000" 
+                                   class="btn btn-secondary" target="_blank">
+                                    <i class="bi bi-whatsapp"></i> Order via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <div class="card-img-top product-image d-flex align-items-center justify-content-center">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Vegetarian Pizza" class="product-img">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Veggie Delight</h5>
+                            <p class="card-text">Bell peppers, mushrooms, olives, and fresh vegetables</p>
+                            <p class="price">₦3,200</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" onclick="addToCart('veggie-delight', 'Veggie Delight', 3200)">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                                <a href="https://wa.me/2349135371742?text=I%20want%20to%20order%20Veggie%20Delight%20-%20₦3,200" 
+                                   class="btn btn-secondary" target="_blank">
+                                    <i class="bi bi-whatsapp"></i> Order via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Snacks Section -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h3 class="text-primary mb-4">🍖 Snacks & Wraps</h3>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <div class="card-img-top product-image d-flex align-items-center justify-content-center">
+                            <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Chicken Shawarma" class="product-img">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Chicken Shawarma</h5>
+                            <p class="card-text">Grilled chicken wrap with vegetables and sauce</p>
+                            <p class="price">₦2,500</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" onclick="addToCart('chicken-shawarma', 'Chicken Shawarma', 2000)">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                                <a href="https://wa.me/2349135371742?text=I%20want%20to%20order%20Chicken%20Shawarma%20-%20₦2,000" 
+                                   class="btn btn-secondary" target="_blank">
+                                    <i class="bi bi-whatsapp"></i> Order via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <div class="card-img-top product-image d-flex align-items-center justify-content-center">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Beef Burger" class="product-img">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Beef Burger</h5>
+                            <p class="card-text">Juicy beef patty with lettuce, tomato, and special sauce</p>
+                            <p class="price">₦2,500</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" onclick="addToCart('beef-burger', 'Beef Burger', 2500)">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                                <a href="https://wa.me/2349135371742?text=I%20want%20to%20order%20Beef%20Burger%20-%20₦2,500" 
+                                   class="btn btn-secondary" target="_blank">
+                                    <i class="bi bi-whatsapp"></i> Order via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <div class="card-img-top product-image d-flex align-items-center justify-content-center">
+                            <img src="dietplanet.com.ng/chicken.jpeg" alt="Chicken Wings" class="product-img">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Spicy Wings</h5>
+                            <p class="card-text">6 pieces of spicy grilled chicken wings</p>
+                            <p class="price">₦4,800</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" onclick="addToCart('spicy-wings', 'Spicy Wings', 1800)">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                                <a href="https://wa.me/2349135371742?text=I%20want%20to%20order%20Spicy%20Wings%20-%20₦1,800" 
+                                   class="btn btn-secondary" target="_blank">
+                                    <i class="bi bi-whatsapp"></i> Order via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Drinks Section -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h3 class="text-primary mb-4">🥤 Drinks</h3>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <div class="card-img-top product-image d-flex align-items-center justify-content-center">
+                            <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Fresh Orange Juice" class="product-img">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Fresh Orange Juice</h5>
+                            <p class="card-text">100% natural orange juice, freshly squeezed</p>
+                            <p class="price">₦800</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" onclick="addToCart('orange-juice', 'Fresh Orange Juice', 800)">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                                <a href="https://wa.me/2349135371742?text=I%20want%20to%20order%20Fresh%20Orange%20Juice%20-%20₦800" 
+                                   class="btn btn-secondary" target="_blank">
+                                    <i class="bi bi-whatsapp"></i> Order via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <div class="card-img-top product-image d-flex align-items-center justify-content-center">
+                            <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Smoothie" class="product-img">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Fruit Smoothie</h5>
+                            <p class="card-text">Mixed fruit smoothie with yogurt and honey</p>
+                            <p class="price">₦1,200</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" onclick="addToCart('fruit-smoothie', 'Fruit Smoothie', 1200)">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                                <a href="https://wa.me/2349135371742?text=I%20want%20to%20order%20Fruit%20Smoothie%20-%20₦1,200" 
+                                   class="btn btn-secondary" target="_blank">
+                                    <i class="bi bi-whatsapp"></i> Order via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <div class="card-img-top product-image d-flex align-items-center justify-content-center">
+                            <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Soft Drink" class="product-img">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Soft Drinks</h5>
+                            <p class="card-text">Coca-Cola, Pepsi, Sprite, or Fanta (500ml)</p>
+                            <p class="price">₦600</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" onclick="addToCart('soft-drink', 'Soft Drinks', 500)">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                                <a href="https://wa.me/2349135371742?text=I%20want%20to%20order%20Soft%20Drinks%20-%20₦500" 
+                                   class="btn btn-secondary" target="_blank">
+                                    <i class="bi bi-whatsapp"></i> Order via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="display-5 fw-bold mb-4">Ready to Order?</h2>
+            <p class="lead mb-4">Add items to your cart or contact us directly via WhatsApp</p>
+            <div class="d-flex justify-content-center gap-3">
+                <button class="btn btn-light btn-lg" onclick="toggleCart()">View Cart</button>
+                <a href="https://wa.me/2349135371742" class="btn btn-secondary btn-lg" target="_blank">
+                    📱 Contact Us: 09135371742
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="logo.png" alt="Diet Planet Logo" width="30" height="30" class="me-2">
+                        <span class="fw-bold">Diet Planet</span>
+                    </div>
+                    <p class="text-white">Serving healthy and delicious food to FUTO and UNIPORT students since 2024</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-white mb-1">Contact: <a href="https://wa.me/2349135371742" class="text-white">09135371742</a></p>
+                    <p class="text-white">&copy; 2024 Diet Planet. All rights reserved. Created by Darc Designs</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">
+                        <i class="bi bi-cart"></i> Shopping Cart
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cart-items">
+                        <!-- Cart items will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="me-auto">
+                        <strong>Total: ₦<span id="cart-total">0</span></strong>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+                    <button type="button" class="btn btn-primary" onclick="proceedToCheckout()">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="checkoutModalLabel">Checkout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="checkout-items"></div>
+                    <div class="mt-3">
+                        <strong>Total: ₦<span id="checkout-total">0</span></strong>
+                    </div>
+                    <div class="mt-3">
+                        <label for="delivery-address" class="form-label">Delivery Address</label>
+                        <textarea class="form-control" id="delivery-address" rows="3" placeholder="Enter your full delivery address"></textarea>
+                    </div>
+                    <div class="mt-3">
+                        <label for="phone-number" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone-number" placeholder="Your contact number">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="payOnDelivery()">Pay on Delivery</button>
+                    <button type="button" class="btn btn-success" onclick="payThroughWhatsApp()">Pay via WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="firebase-config.js"></script>
+    <script src="cart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

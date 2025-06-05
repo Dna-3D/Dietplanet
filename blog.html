@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Diet Planet | Food Tips for FUTO Students</title>
+    <meta name="description" content="Read helpful articles about healthy eating, study snacks, and campus life tips from Diet Planet.">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="logo.png" alt="Diet Planet Logo" width="40" height="40" class="me-2">
+                <span class="fw-bold">Diet Planet</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-outline-light me-2" id="theme-toggle">
+                        <i class="bi bi-moon-fill" id="theme-icon"></i>
+                    </button>
+                    <button class="btn btn-secondary me-2" onclick="toggleCart()">
+                        <i class="bi bi-cart"></i>
+                        <span class="badge bg-danger" id="cart-count">0</span>
+                    </button>
+                    <button class="btn btn-light" id="login-btn" onclick="showAuth()">Login</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center" style="padding-top: 80px;">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-4">Diet Planet Blog</h1>
+                    <p class="lead">Tips, insights, and healthy living advice for FUTO students</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Blog Post 1 -->
+                    <article class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h2 class="card-title text-primary">5 Healthy Study Snacks Every FUTO Student Should Try</h2>
+                            <p class="text-muted mb-3">
+                                <i class="bi bi-calendar"></i> December 15, 2024 | 
+                                <i class="bi bi-person"></i> Diet Planet Team
+                            </p>
+                            <p class="card-text">Studying can be exhausting, and it's easy to reach for unhealthy snacks. Here are five nutritious options that will keep your energy levels stable and your mind sharp during those long study sessions.</p>
+                            <div class="mb-3">
+                                <h5>1. Mixed Nuts and Dried Fruits</h5>
+                                <p>Perfect combination of healthy fats, protein, and natural sugars to fuel your brain.</p>
+                                
+                                <h5>2. Greek Yogurt with Berries</h5>
+                                <p>Rich in protein and antioxidants, this snack supports concentration and memory.</p>
+                                
+                                <h5>3. Whole Grain Crackers with Avocado</h5>
+                                <p>Provides sustained energy and healthy fats that support brain function.</p>
+                                
+                                <h5>4. Dark Chocolate (70% or higher)</h5>
+                                <p>Contains flavonoids that can improve cognitive function and mood.</p>
+                                
+                                <h5>5. Fresh Fruit Smoothie</h5>
+                                <p>Hydrating and packed with vitamins to keep you alert and focused.</p>
+                            </div>
+                            <a href="menu.html" class="btn btn-primary">Order Healthy Snacks</a>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 2 -->
+                    <article class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h2 class="card-title text-primary">Budget-Friendly Meal Planning for University Students</h2>
+                            <p class="text-muted mb-3">
+                                <i class="bi bi-calendar"></i> December 10, 2024 | 
+                                <i class="bi bi-person"></i> Diet Planet Team
+                            </p>
+                            <p class="card-text">Managing food expenses while maintaining a healthy diet can be challenging for students. Here's how to eat well without breaking the bank.</p>
+                            <div class="mb-3">
+                                <h5>Weekly Meal Planning Tips:</h5>
+                                <ul>
+                                    <li>Plan your meals in advance to avoid impulse purchases</li>
+                                    <li>Buy ingredients that can be used in multiple meals</li>
+                                    <li>Take advantage of student discounts and bulk pricing</li>
+                                    <li>Cook in batches and store portions for later</li>
+                                    <li>Balance convenience with nutrition</li>
+                                </ul>
+                                
+                                <h5>Budget-Friendly Protein Sources:</h5>
+                                <ul>
+                                    <li>Eggs - versatile and affordable</li>
+                                    <li>Beans and lentils - plant-based protein</li>
+                                    <li>Chicken - cost-effective animal protein</li>
+                                    <li>Tuna - convenient and nutritious</li>
+                                </ul>
+                            </div>
+                            <a href="menu.html" class="btn btn-primary">View Affordable Menu</a>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 3 -->
+                    <article class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h2 class="card-title text-primary">The Importance of Hydration During Exam Season</h2>
+                            <p class="text-muted mb-3">
+                                <i class="bi bi-calendar"></i> December 5, 2024 | 
+                                <i class="bi bi-person"></i> Diet Planet Team
+                            </p>
+                            <p class="card-text">During intense study periods, students often forget to stay properly hydrated. Learn why hydration is crucial for academic performance and how to maintain it.</p>
+                            <div class="mb-3">
+                                <h5>Why Hydration Matters:</h5>
+                                <ul>
+                                    <li>Improves concentration and memory</li>
+                                    <li>Prevents fatigue and headaches</li>
+                                    <li>Maintains optimal brain function</li>
+                                    <li>Supports overall health and immunity</li>
+                                </ul>
+                                
+                                <h5>Hydration Tips:</h5>
+                                <ul>
+                                    <li>Keep a water bottle at your study desk</li>
+                                    <li>Set reminders to drink water regularly</li>
+                                    <li>Include hydrating foods like fruits and vegetables</li>
+                                    <li>Limit caffeine and sugary drinks</li>
+                                    <li>Start each day with a glass of water</li>
+                                </ul>
+                            </div>
+                            <a href="menu.html" class="btn btn-primary">Order Fresh Drinks</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Quick Order</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Hungry while reading? Order your favorite meal now!</p>
+                            <div class="d-grid gap-2">
+                                <a href="menu.html" class="btn btn-primary">Browse Menu</a>
+                                <a href="https://wa.me/2349135371742" class="btn btn-secondary" target="_blank">
+                                    <i class="bi bi-whatsapp"></i> Quick Order via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Popular Posts</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <a href="#" class="text-decoration-none">10 Quick Breakfast Ideas for Busy Students</a>
+                                    <small class="text-muted d-block">Dec 1, 2024</small>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#" class="text-decoration-none">How to Stay Healthy During Exam Period</a>
+                                    <small class="text-muted d-block">Nov 28, 2024</small>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#" class="text-decoration-none">Best Foods for Late-Night Study Sessions</a>
+                                    <small class="text-muted d-block">Nov 25, 2024</small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Categories</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="text-decoration-none">Healthy Eating</a></li>
+                                <li><a href="#" class="text-decoration-none">Study Tips</a></li>
+                                <li><a href="#" class="text-decoration-none">Budget Meals</a></li>
+                                <li><a href="#" class="text-decoration-none">Campus Life</a></li>
+                                <li><a href="#" class="text-decoration-none">Nutrition</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-5 bg-light-custom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="text-primary mb-4">Stay Updated</h2>
+                    <p class="lead mb-4">Get the latest tips, recipes, and health advice delivered to your inbox</p>
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Enter your email">
+                                <button class="btn btn-primary" type="button">Subscribe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="logo.png" alt="Diet Planet Logo" width="30" height="30" class="me-2">
+                        <span class="fw-bold">Diet Planet</span>
+                    </div>
+                    <p class="text-white">Serving healthy and delicious food to FUTO students since 2024</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-white mb-1">Contact: <a href="https://wa.me/2349135371742" class="text-white">09135371742</a></p>
+                    <p class="text-white">&copy; 2024 Diet Planet. All rights reserved. Created by Darc Designs</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="firebase-config.js"></script>
+    <script src="cart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

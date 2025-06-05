@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Planet - Hot & Fresh Pizza Delivery for FUTO Students</title>
+    <meta name="description" content="Best pizza and snacks delivery service for FUTO students. Fast delivery, affordable prices, and delicious food right to your doorstep.">
+    <meta name="keywords" content="pizza delivery, FUTO, students, snacks, drinks, fast food, Nigeria, Diet Planet">
+    <meta name="author" content="Diet Planet">
+    <meta property="og:title" content="Diet Planet - Hot & Fresh Pizza Delivery">
+    <meta property="og:description" content="Best pizza and snacks delivery service for FUTO students">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yoursite.com">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="logo.png" alt="Diet Planet Logo" width="40" height="40" class="me-2">
+                <span class="fw-bold">Diet Planet</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-outline-light me-2" id="theme-toggle">
+                        <i class="bi bi-moon-fill" id="theme-icon"></i>
+                    </button>
+                    <button class="btn btn-secondary me-2" onclick="toggleCart()">
+                        <i class="bi bi-cart"></i>
+                        <span class="badge bg-danger" id="cart-count">0</span>
+                    </button>
+                    <button class="btn btn-light" id="login-btn" onclick="showAuth()">Login</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold text-primary mb-4">Healthy & Delicious Food for FUTO and UNIPORT Students</h1>
+                    <p class="lead mb-4">Satisfy your cravings with our nutritious pizzas, snacks, and drinks. Fast delivery right to your hostel or department!</p>
+                    <div class="d-flex gap-3">
+                        <a href="menu.html" class="btn btn-primary btn-lg">Order Now</a>
+                        <a href="about.html" class="btn btn-outline-primary btn-lg">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <i class="bi bi-pizza display-1 text-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Banner Section - Fixed layout -->
+    <section class="banner-section py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="banner-wrapper text-center">
+                        <img src="banner.png" alt="Diet Planet Special Offer" class="img-fluid banner-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hot Orders Section -->
+    <section class="py-5 bg-light-custom">
+        <div class="container">
+            <h2 class="text-center mb-5 text-primary">🔥 Hot Orders Today</h2>
+            <div class="row">
+                <!-- Hot Order 1 -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <div class="card-img-top product-image d-flex align-items-center justify-content-center">
+                            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Margherita Supreme Pizza" class="product-img">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Margherita Supreme</h5>
+                            <p class="card-text">Fresh tomatoes, mozzarella, and basil on crispy crust</p>
+                            <p class="price">₦11,200</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" onclick="addToCart('margherita-supreme', 'Margherita Supreme', 3500)">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                                <a href="https://wa.me/2349135371742?text=I%20want%20to%20order%20Margherita%20Supreme%20-%20₦3,500" 
+                                   class="btn btn-secondary" target="_blank">
+                                    <i class="bi bi-whatsapp"></i> Order via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hot Order 2 -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <div class="card-img-top product-image d-flex align-items-center justify-content-center">
+                            <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Chicken Shawarma" class="product-img">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Chicken Shawarma</h5>
+                            <p class="card-text">Grilled chicken wrap with vegetables and sauce</p>
+                            <p class="price">₦2,500</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" onclick="addToCart('chicken-shawarma', 'Chicken Shawarma', 2000)">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                                <a href="https://wa.me/2349135371742?text=I%20want%20to%20order%20Chicken%20Shawarma%20-%20₦2,000" 
+                                   class="btn btn-secondary" target="_blank">
+                                    <i class="bi bi-whatsapp"></i> Order via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hot Order 3 -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <div class="card-img-top product-image d-flex align-items-center justify-content-center">
+                            <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Fresh Orange Juice" class="product-img">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Fresh Orange Juice</h5>
+                            <p class="card-text">100% natural orange juice, freshly squeezed</p>
+                            <p class="price">₦800</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" onclick="addToCart('orange-juice', 'Fresh Orange Juice', 800)">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                                <a href="https://wa.me/2349135371742?text=I%20want%20to%20order%20Fresh%20Orange%20Juice%20-%20₦800" 
+                                   class="btn btn-secondary" target="_blank">
+                                    <i class="bi bi-whatsapp"></i> Order via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="display-5 fw-bold text-primary mb-4">About Diet Planet</h2>
+                    <h3 class="text-secondary mb-3">Empowering FUTO Students Through Healthy & Affordable Nutrition</h3>
+                    <p class="lead mb-4">At Diet Planet, we understand the challenges that come with being a student at the Federal University of Technology, Owerri (FUTO). Long study hours, tight budgets, and the constant need for convenient, nutritious meals are just some of the daily realities our fellow students face.</p>
+                    <p class="mb-4">Founded by FUTO alumni who experienced these challenges firsthand, Diet Planet was born from a simple yet powerful idea: <strong>every student deserves access to healthy, affordable food</strong> without compromising on nutrition or convenience.</p>
+                    <a href="about.html" class="btn btn-primary">Learn More About Us</a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <i class="bi bi-people display-1 text-primary mb-4"></i>
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <h3 class="text-primary">500+</h3>
+                                <p>Happy Students</p>
+                            </div>
+                            <div class="col-6">
+                                <h3 class="text-primary">30min</h3>
+                                <p>Avg. Delivery</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="display-5 fw-bold mb-4">Ready to Join the Diet Planet Family?</h2>
+            <p class="lead mb-4">Experience the difference of student-focused healthy food delivery</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="menu.html" class="btn btn-light btn-lg">View Our Menu</a>
+                <a href="https://wa.me/2349135371742" class="btn btn-secondary btn-lg" target="_blank">
+                    📱 Contact Us: 09135371742
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="logo.png" alt="Diet Planet Logo" width="30" height="30" class="me-2">
+                        <span class="fw-bold">Diet Planet</span>
+                    </div>
+                    <p class="text-white">Serving healthy and delicious food to FUTO and UNIPORT students since 2024</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-white mb-1">Contact: <a href="https://wa.me/2349135371742" class="text-white">09135371742</a></p>
+                    <p class="text-white">&copy; 2024 Diet Planet. All rights reserved. Created by Darc Designs</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">
+                        <i class="bi bi-cart"></i> Shopping Cart
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cart-items">
+                        <!-- Cart items will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="me-auto">
+                        <strong>Total: ₦<span id="cart-total">0</span></strong>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+                    <button type="button" class="btn btn-primary" onclick="proceedToCheckout()">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="checkoutModalLabel">Checkout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="checkout-items"></div>
+                    <div class="mt-3">
+                        <strong>Total: ₦<span id="checkout-total">0</span></strong>
+                    </div>
+                    <div class="mt-3">
+                        <label for="delivery-address" class="form-label">Delivery Address</label>
+                        <textarea class="form-control" id="delivery-address" rows="3" placeholder="Enter your full delivery address"></textarea>
+                    </div>
+                    <div class="mt-3">
+                        <label for="phone-number" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone-number" placeholder="Your contact number">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="payOnDelivery()">Pay on Delivery</button>
+                    <button type="button" class="btn btn-success" onclick="payThroughWhatsApp()">Pay via WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="firebase-config.js"></script>
+    <script src="cart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Diet Planet | Serving FUTO Students</title>
+    <meta name="description" content="Learn about Diet Planet's mission to provide healthy, affordable food to FUTO students. Founded by alumni who understand student life.">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="logo.png" alt="Diet Planet Logo" width="40" height="40" class="me-2">
+                <span class="fw-bold">Diet Planet</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-outline-light me-2" id="theme-toggle">
+                        <i class="bi bi-moon-fill" id="theme-icon"></i>
+                    </button>
+                    <button class="btn btn-secondary me-2" onclick="toggleCart()">
+                        <i class="bi bi-cart"></i>
+                        <span class="badge bg-danger" id="cart-count">0</span>
+                    </button>
+                    <button class="btn btn-light" id="login-btn" onclick="showAuth()">Login</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center text-white">
+                        <h1 class="display-3 fw-bold mb-4">About Diet Planet</h1>
+                        <p class="lead fs-4">Empowering FUTO Students Through Healthy & Affordable Nutrition</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4">
+                    <h2 class="display-5 fw-bold text-primary mb-4">Our Story</h2>
+                    <p class="lead mb-4">At Diet Planet, we understand the challenges that come with being a student at the Federal University of Technology, Owerri (FUTO). Long study hours, tight budgets, and the constant need for convenient, nutritious meals are just some of the daily realities our fellow students face.</p>
+                    <p class="mb-4">Founded by FUTO alumni who experienced these challenges firsthand, Diet Planet was born from a simple yet powerful idea: <strong>every student deserves access to healthy, affordable food</strong> without compromising on nutrition or convenience.</p>
+                    <p class="mb-4">We noticed that most food options around campus were either expensive, unhealthy, or both. Students were forced to choose between eating well and staying within budget. That's when we decided to create Diet Planet - a solution that bridges this gap.</p>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="text-center">
+                        <i class="bi bi-people display-1 text-primary mb-4"></i>
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <h3 class="text-primary">500+</h3>
+                                <p>Happy Students Served</p>
+                            </div>
+                            <div class="col-6">
+                                <h3 class="text-primary">30min</h3>
+                                <p>Average Delivery Time</p>
+                            </div>
+                            <div class="col-6">
+                                <h3 class="text-primary">4.8/5</h3>
+                                <p>Customer Rating</p>
+                            </div>
+                            <div class="col-6">
+                                <h3 class="text-primary">24/7</h3>
+                                <p>Customer Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="py-5 bg-light-custom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <i class="bi bi-bullseye display-3 text-primary"></i>
+                            </div>
+                            <h3 class="card-title text-center text-primary">Our Mission</h3>
+                            <p class="card-text">To provide FUTO students with convenient access to nutritious, affordable, and delicious meals that support their academic journey and overall well-being.</p>
+                            <p class="card-text">We believe that good nutrition should not be a luxury but a fundamental right for every student striving to achieve their educational goals.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <i class="bi bi-eye display-3 text-primary"></i>
+                            </div>
+                            <h3 class="card-title text-center text-primary">Our Vision</h3>
+                            <p class="card-text">To become the leading food delivery service for students across Nigerian universities, setting the standard for quality, affordability, and convenience.</p>
+                            <p class="card-text">We envision a future where every student has easy access to healthy food options that fuel their ambitions and dreams.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold text-primary">Our Core Values</h2>
+                    <p class="lead text-muted">The principles that guide everything we do</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <i class="bi bi-heart-fill display-3 text-primary"></i>
+                        </div>
+                        <h4 class="text-primary">Quality First</h4>
+                        <p>We source fresh ingredients and maintain the highest standards in food preparation and hygiene.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <i class="bi bi-wallet2 display-3 text-primary"></i>
+                        </div>
+                        <h4 class="text-primary">Student-Friendly Pricing</h4>
+                        <p>Our prices are designed with student budgets in mind, without compromising on quality or portion sizes.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <i class="bi bi-lightning-charge display-3 text-primary"></i>
+                        </div>
+                        <h4 class="text-primary">Speed & Reliability</h4>
+                        <p>We understand your time is valuable. Fast delivery and consistent service you can count on.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-5 bg-light-custom">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold text-primary">Why Choose Diet Planet?</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="text-center">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="bi bi-geo-alt-fill fs-3"></i>
+                        </div>
+                        <h5>Campus Delivery</h5>
+                        <p class="text-muted">We deliver directly to your hostel, department, or any location within FUTO campus.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="text-center">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="bi bi-clock-fill fs-3"></i>
+                        </div>
+                        <h5>Flexible Hours</h5>
+                        <p class="text-muted">Open from early morning to late night to accommodate your study schedule.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="text-center">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="bi bi-credit-card-fill fs-3"></i>
+                        </div>
+                        <h5>Multiple Payment Options</h5>
+                        <p class="text-muted">Pay on delivery, via WhatsApp, or through various digital payment methods.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="text-center">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="bi bi-shield-check-fill fs-3"></i>
+                        </div>
+                        <h5>Safety & Hygiene</h5>
+                        <p class="text-muted">All meals are prepared in clean, safe kitchens following strict hygiene protocols.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold text-primary">Meet Our Team</h2>
+                    <p class="lead text-muted">FUTO studens passionate about serving fellow students</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="text-center">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 120px; height: 120px;">
+                            <i class="bi bi-person-fill" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5>DNA</h5>
+                        <p class="text-primary">Founder & CEO</p>
+                        <p class="text-muted">Computer Science graduate, Class of 2020. currently studying Mechatronics Passionate about using technology to solve student problems.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="text-center">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 120px; height: 120px;">
+                            <i class="bi bi-person-fill" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5>Leo Egbulem</h5>
+                        <p class="text-primary">Head of Operations</p>
+                        <p class="text-muted">Food Technology graduate, Class of 2019. Ensures quality and safety in all our food preparation processes.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="text-center">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 120px; height: 120px;">
+                            <i class="bi bi-person-fill" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5>Stephanie Odinka</h5>
+                        <p class="text-primary">Logistics Manager</p>
+                        <p class="text-muted">Mechatronics Engineering student. Manages our efficient delivery network across campus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="display-5 fw-bold mb-4">Ready to Join the Diet Planet Family?</h2>
+            <p class="lead mb-4">Experience the difference of student-focused healthy food delivery</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="menu.html" class="btn btn-light btn-lg">View Our Menu</a>
+                <a href="https://wa.me/2349135371742" class="btn btn-secondary btn-lg" target="_blank">
+                    Contact Us: 09135371742
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="logo.png" alt="Diet Planet Logo" width="30" height="30" class="me-2">
+                        <span class="fw-bold">Diet Planet</span>
+                    </div>
+                    <p class="text-white">Serving healthy and delicious food to FUTO students since 2024</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-white mb-1">Contact: <a href="https://wa.me/2349135371742" class="text-white">09135371742</a></p>
+                    <p class="text-white">&copy; 2024 Diet Planet. All rights reserved. Created by Darc Designs</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="firebase-config.js"></script>
+    <script src="cart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
