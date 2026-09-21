@@ -3,6 +3,8 @@ import { ArrowRight, BadgeCheck, ChevronDown, Clock3, History, LogIn, Menu, Minu
 import logo from './assets/logo.png'
 import founderImage from './assets/dna.jpeg'
 import './App.css'
+import './theme-overrides.css'
+import './light-mode-contrast.css'
 
 const crops = {
   'Fresh Red Pepper': { rate: 0.15, days: 7, fee: 180 },
@@ -38,6 +40,10 @@ function App() {
     document.documentElement.dataset.theme = theme
     localStorage.setItem('diet-planet-theme', theme)
   }, [theme])
+  useEffect(() => {
+    const titles = { '/': 'Diet Planet | Agritech & Clean Nutrition', '/processing': 'Farmer Processing | Diet Planet', '/store': 'B2B Bulk Store | Diet Planet', '/tracker': 'Track a Batch | Diet Planet', '/about': 'About Diet Planet | African Food Infrastructure', '/account': 'Farmer Account | Diet Planet' }
+    document.title = titles[page] || titles['/']
+  }, [page])
   useEffect(() => {
     const handlePopState = () => setPage(window.location.pathname)
     window.addEventListener('popstate', handlePopState)

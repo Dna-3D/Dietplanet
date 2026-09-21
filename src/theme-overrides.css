@@ -1,0 +1,162 @@
+:root {
+  --burgundy: #8f2630;
+  --burgundy-dark: #6f1d26;
+}
+
+.app-shell {
+  --accent-burgundy: var(--burgundy);
+}
+
+.brand-button,
+.site-footer .brand-button {
+  border-left: 3px solid var(--accent-burgundy);
+  padding-left: 10px;
+}
+
+.product-badge,
+.pulse-label {
+  border-color: var(--accent-burgundy);
+}
+
+.cart-button span {
+  background: var(--accent-burgundy);
+}
+
+.founder-block {
+  border-left-color: var(--accent-burgundy);
+}
+
+.auth-modal,
+.account-card:first-child {
+  border-top: 2px solid var(--accent-burgundy);
+}
+
+html[data-theme='light'] .app-shell {
+  color: #27231f;
+}
+
+html[data-theme='light'] .site-header,
+html[data-theme='light'] .site-footer,
+html[data-theme='light'] .section,
+html[data-theme='light'] .account-section {
+  color: #27231f;
+}
+
+html[data-theme='light'] .main-nav button,
+html[data-theme='light'] .account-button,
+html[data-theme='light'] .hero-note,
+html[data-theme='light'] .section-heading > p,
+html[data-theme='light'] .hero-subtitle,
+html[data-theme='light'] .site-footer p,
+html[data-theme='light'] .site-footer a,
+html[data-theme='light'] .site-footer span,
+html[data-theme='light'] .site-footer button:not(.brand-button):not(.app-button),
+html[data-theme='light'] .account-card p,
+html[data-theme='light'] .about-detail > p,
+html[data-theme='light'] .founder-block p {
+  color: #625b53;
+}
+
+html[data-theme='light'] .button-outline {
+  color: #27231f;
+  border-color: #9b8f82;
+}
+
+html[data-theme='light'] .cart-button,
+html[data-theme='light'] .icon-button,
+html[data-theme='light'] .site-footer .brand,
+html[data-theme='light'] .site-footer .brand span:last-child {
+  color: #27231f;
+}
+
+html[data-theme='light'] .booking-card h3,
+html[data-theme='light'] .booking-card p,
+html[data-theme='light'] .product-info h3,
+html[data-theme='light'] .card-top h3,
+html[data-theme='light'] .account-card h3,
+html[data-theme='light'] .history-row,
+html[data-theme='light'] .about-detail h2,
+html[data-theme='light'] .founder-block h3 {
+  color: #27231f;
+}
+
+html[data-theme='light'] .booking-card label,
+html[data-theme='light'] .settlement-label,
+html[data-theme='light'] .weight-row span,
+html[data-theme='light'] .product-info > div > small {
+  color: #766b60;
+}
+
+html[data-theme='light'] .booking-card input,
+html[data-theme='light'] .booking-card select,
+html[data-theme='light'] .auth-modal input,
+html[data-theme='light'] .search-box input {
+  color: #27231f;
+  background: #f5eee2;
+  border-color: #cfc2b0;
+}
+
+html[data-theme='light'] .booking-card input::placeholder,
+html[data-theme='light'] .auth-modal input::placeholder,
+html[data-theme='light'] .search-box input::placeholder {
+  color: #81776d;
+}
+
+html[data-theme='light'] .settlement,
+html[data-theme='light'] .product-card,
+html[data-theme='light'] .booking-card,
+html[data-theme='light'] .account-card {
+  color: #27231f;
+}
+
+html[data-theme='light'] .settlement {
+  background: #f5eee2;
+  border-color: #d9cdbc;
+}
+
+html[data-theme='light'] .settlement.selected {
+  background: #f7e8e7;
+  border-color: var(--accent-burgundy);
+}
+
+html[data-theme='light'] .settlement small,
+html[data-theme='light'] .empty-history,
+html[data-theme='light'] .drawer-note {
+  color: #6f665e;
+}
+
+html[data-theme='light'] .product-card,
+html[data-theme='light'] .booking-card,
+html[data-theme='light'] .account-card,
+html[data-theme='light'] .timeline-card {
+  box-shadow: 0 12px 30px rgb(73 51 33 / 8%);
+}
+
+html[data-theme='light'] .cart-drawer,
+html[data-theme='light'] .auth-modal {
+  color: #27231f;
+  background: #fffdf8;
+}
+
+html[data-theme='light'] .drawer-header h2,
+html[data-theme='light'] .cart-item-info b,
+html[data-theme='light'] .drawer-total span {
+  color: #27231f;
+}
+
+html[data-theme='light'] .timeline-item b,
+html[data-theme='light'] .timeline-item small,
+html[data-theme='light'] .timeline-top strong {
+  color: #514941;
+}
+
+html[data-theme='light'] .auth-modal > p,
+html[data-theme='light'] .auth-switch {
+  color: #625b53;
+}
+
+html[data-theme='light'] .auth-switch,
+html[data-theme='light'] .product-badge,
+html[data-theme='light'] .pulse-label {
+  color: var(--accent-burgundy);
+}

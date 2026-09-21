@@ -1,0 +1,77 @@
+html[data-theme='light'] .app-shell,
+html[data-theme='light'] .site-header,
+html[data-theme='light'] .main-nav button,
+html[data-theme='light'] .account-button,
+html[data-theme='light'] .cart-button,
+html[data-theme='light'] .icon-button,
+html[data-theme='light'] .hero-copy h1,
+html[data-theme='light'] .section-heading h2,
+html[data-theme='light'] .tracker-copy h2,
+html[data-theme='light'] .card-top h3,
+html[data-theme='light'] .card-top p,
+html[data-theme='light'] .booking-card label,
+html[data-theme='light'] .booking-card input,
+html[data-theme='light'] .booking-card select,
+html[data-theme='light'] .settlement,
+html[data-theme='light'] .settlement b,
+html[data-theme='light'] .product-info h3,
+html[data-theme='light'] .product-bottom,
+html[data-theme='light'] .search-box input,
+html[data-theme='light'] .tracker-input input,
+html[data-theme='light'] .timeline-item b,
+html[data-theme='light'] .timeline-item small,
+html[data-theme='light'] .timeline-top strong,
+html[data-theme='light'] .site-footer,
+html[data-theme='light'] .site-footer .brand,
+html[data-theme='light'] .drawer-header h2,
+html[data-theme='light'] .cart-item-info b,
+html[data-theme='light'] .auth-modal,
+html[data-theme='light'] .auth-modal h2,
+html[data-theme='light'] .auth-modal input {
+  color: #27231f;
+}
+
+html[data-theme='light'] .hero-subtitle,
+html[data-theme='light'] .hero-note,
+html[data-theme='light'] .section-heading > p,
+html[data-theme='light'] .card-top p,
+html[data-theme='light'] .settlement small,
+html[data-theme='light'] .product-bottom small,
+html[data-theme='light'] .tracker-copy p,
+html[data-theme='light'] .tracker-hint,
+html[data-theme='light'] .timeline-item,
+html[data-theme='light'] .timeline-item small,
+html[data-theme='light'] .site-footer p,
+html[data-theme='light'] .site-footer a,
+html[data-theme='light'] .site-footer span,
+html[data-theme='light'] .drawer-note,
+html[data-theme='light'] .auth-modal > p {
+  color: #625b53;
+}
+
+html[data-theme='light'] .button-outline {
+  color: #27231f;
+  border-color: #8d8175;
+}
+
+html[data-theme='light'] .settlement,
+html[data-theme='light'] .booking-card input,
+html[data-theme='light'] .booking-card select,
+html[data-theme='light'] .search-box input,
+html[data-theme='light'] .tracker-input,
+html[data-theme='light'] .tracker-input input,
+html[data-theme='light'] .auth-modal input {
+  background: #f5eee2;
+  border-color: #cfc2b0;
+}
+
+html[data-theme='light'] .settlement.selected,
+html[data-theme='light'] .product-badge,
+html[data-theme='light'] .pulse-label {
+  border-color: #8f2630;
+  color: #6f1d26;
+}
+
+html[data-theme='light'] .site-footer button:not(.brand-button):not(.app-button) {
+  color: #625b53;
+}
