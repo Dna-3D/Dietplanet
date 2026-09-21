@@ -1,0 +1,27 @@
+CREATE TABLE IF NOT EXISTS farmers (
+  id BIGSERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  phone TEXT UNIQUE NOT NULL,
+  password_hash TEXT NOT NULL,
+  avatar_url TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS processing_orders (
+  id BIGSERIAL PRIMARY KEY,
+  farmer_id BIGINT NOT NULL REFERENCES farmers(id) ON DELETE CASCADE,
+  crop TEXT NOT NULL,
+  mass_kg NUMERIC NOT NULL,
+  settlement TEXT NOT NULL,
+  location TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'Received & Sorted',
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS cart_history (
+  id BIGSERIAL PRIMARY KEY,
+  farmer_id BIGINT NOT NULL REFERENCES farmers(id) ON DELETE CASCADE,
+  items JSONB NOT NULL DEFAULT '[]',
+  total_kobo INTEGER NOT NULL DEFAULT 0,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
