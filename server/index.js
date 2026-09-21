@@ -72,4 +72,8 @@ app.post('/api/cloudinary/signature', authRequired, (request, response) => {
   response.json({ timestamp, signature: cloudinary.utils.api_sign_request({ timestamp, folder: 'diet-planet/farmers' }, process.env.CLOUDINARY_API_SECRET), cloudName: process.env.CLOUDINARY_CLOUD_NAME, apiKey: process.env.CLOUDINARY_API_KEY, folder: 'diet-planet/farmers' })
 })
 
-app.listen(port, () => console.log(`Diet Planet API listening on http://localhost:${port}`))
+if (process.env.VERCEL !== '1') {
+  app.listen(port, () => console.log(`Diet Planet API listening on http://localhost:${port}`))
+}
+
+export default app
